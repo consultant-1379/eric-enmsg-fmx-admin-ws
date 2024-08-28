@@ -1,0 +1,6 @@
+- name: data
+  mountPath: /ericsson/tor/data
+- name: httpd-tls-secret-1
+  mountPath: {{ .Values.service.tlsMountPath }}/tlshttpd1
+- name: httpd-tls-secret-2
+  mountPath: {{ .Values.service.tlsMountPath }}/tlshttpd2

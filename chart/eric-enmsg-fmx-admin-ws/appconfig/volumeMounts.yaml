@@ -1,0 +1,16 @@
+- mountPath: /gp  
+  name: gp
+- mountPath: /ericsson/enm/dumps
+  name: dumps
+- mountPath: /ericsson/tor/data/fmx
+  name: fmx
+- mountPath: /ericsson/tor/data
+  name: data
+- mountPath: /home/shared
+  name: home
+- mountPath: "/sys/fs/cgroup"
+  name: cgroups-host-volume
+- mountPath: "/run"
+  name: run-volume
+- mountPath: "/tmp"
+  name: tmp-volume

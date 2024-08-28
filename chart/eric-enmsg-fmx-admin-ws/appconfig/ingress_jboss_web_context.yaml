@@ -1,0 +1,273 @@
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmx/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmx/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmx/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxeventsim/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxeventsim/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxeventsim/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxtrace/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxtrace/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxtrace/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxtimeperiod/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxtimeperiod/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxtimeperiod/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxmodmgt/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxmodmgt/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxmodmgt/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxmonitor/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxmonitor/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxmonitor/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxeditor/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxeditor/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxeditor/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxadminws/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxadminws/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxadminws/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxstats/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxstats/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxstats/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxedd/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxedd/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxedd/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxparam/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxparam/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxparam/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxdatalib/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxdatalib/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxdatalib/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /fmxcommonlib/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /locales/en-us/fmxcommonlib/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fmx-adminws
+      port:
+        number: 443
+  path: /help/en-us/fmxcommonlib/
+  pathType: ImplementationSpecific

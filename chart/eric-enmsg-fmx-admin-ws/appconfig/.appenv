@@ -1,0 +1,9 @@
+DEP=true
+NAME=eric-enmsg-fmx-admin-ws
+SVC=fmx-adminws
+WAIT=true
+WAIT_LIST=gossiprouter-cache,gossiprouter-remoting,models,jms01,postgres,sps,secserv,haproxy
+REQUESTS=true
+REQUESTS_LIST=4096Mi
+LIMITS=true
+LIMITS_LIST=8192Mi

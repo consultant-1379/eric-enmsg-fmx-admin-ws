@@ -1,0 +1,6 @@
+[repo-oss]
+enabled=1
+autorefresh=1
+baseurl=https://arm.sero.gic.ericsson.se/artifactory/proj-suse-repos-rpm-local/SLE15/SLE-15-SP5-Module-Basesystem?ssl_verify=no
+priority=50
+gpgcheck=0

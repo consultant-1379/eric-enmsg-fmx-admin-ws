@@ -1,0 +1,29 @@
+- name: gp
+  configMap:
+    name: gpfmxmsg
+- name: dumps
+  persistentVolumeClaim:
+    claimName: hcdumps
+- name: fmx
+  persistentVolumeClaim:
+    claimName: fmx
+- name: data
+  persistentVolumeClaim:
+    claimName: data
+- name: home
+  persistentVolumeClaim:
+    claimName: home-shared
+- name: cgroups-host-volume
+  hostPath:
+    # directory location on host
+    path: /sys/fs/cgroup
+    # this field is optional
+    type: Directory
+- name: run-volume
+  emptyDir:
+    medium: Memory
+    sizeLimit: 100Mi
+- name: tmp-volume
+  emptyDir:
+    medium: Memory
+    sizeLimit: 100Mi

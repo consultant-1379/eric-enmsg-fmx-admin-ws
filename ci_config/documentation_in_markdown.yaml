@@ -1,0 +1,4 @@
+documents:
+  - name: adminws_vulnerability_report
+    files:
+      - ../build/adminws_Vulnerability_Report_2.0.md

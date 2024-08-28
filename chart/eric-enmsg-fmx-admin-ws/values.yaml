@@ -1,0 +1,306 @@
+## eric-enmsg-fmx-admin-ws image version
+
+global:
+  registry:
+    url: armdocker.rnd.ericsson.se
+    pullSecret:
+  ingress:
+    enmHost:
+  timezone:
+  enmProperties:
+    COM_INF_LDAP_ADMIN_ACCESS:
+    COM_INF_LDAP_ROOT_SUFFIX:
+    COM_INF_LDAP_ADMIN_CN:
+    COM_INF_LDAP_PORT:
+    LDAP_ADMIN_CN:
+    LDAP_ADMIN_PASSWORD:
+    solrserviceport:
+    web_protocols_default:
+    web_ports_default:
+  rwx:
+    storageClass: nfs
+    hcdumpsfmxSize: 10Gi
+    datafmxSize: 10Gi
+productInfo:
+  number: CXC 123 4567
+  rstate: RSTATE
+securityPolicy:
+  rolename: fmx-adminws
+# Number of replicas(pods) to deploy
+replicas-eric-enmsg-fmx-admin-ws: 1
+images:
+  eric-enmsg-fmx-admin-ws:
+    name: eric-enmsg-fmx-admin-ws
+    tag: VERSION
+  waitInitContainer:
+    enabled: true
+    name: eric-enm-init-container
+    tag: 1.64.0-32
+    command: "[ '/bin/sh', '-c', 'bash /var/tmp/check_service.sh -s fmx-rabbitmq,eric-data-key-value-database-rd-operand']"
+  eric-enm-monitoring:
+    enabled: true
+    name: eric-enm-monitoring-eap7
+    tag: 1.64.0-33
+  eric-enm-httpd:
+    name: eric-enmsg-fmx-admin-ws-httpd
+    tag: VERSION
+  waitForCertificatesContainer:
+    enabled: true
+    name: enm-wait-for-certificates-container
+    tag: 1.52.0-33
+imageCredentials:
+  repoPath: proj-enm
+  pullPolicy: Always
+  registry:
+    url:
+    pullSecret:
+## Configure the service
+service:
+  name: fmx-adminws
+  sgname: fmx-adminws
+  annotations: {}
+  labels:
+  xmlMountPath: "/ericsson/credm/certReqMount"
+  tlsMountPath: "/ericsson/credm/tlsMount"
+ingress:
+  enabled: false
+ingress_jboss_web_context:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+## Configure resource requests and limits
+resources:
+  requests:
+    enabled: true
+    memory: 150Mi
+    cpu: 30m
+  limits:
+    enabled: true
+    memory: 200Mi
+    cpu: 30m
+  monitoring:
+    enabled: true
+    requests:
+      memory: 200Mi
+      cpu: 50m
+    limits:
+      memory: 300Mi
+      cpu: 200m
+  httpd:
+    enabled: false
+    requests:
+      memory:
+      cpu:
+    limits:
+      memory:
+      cpu:
+probes:
+  container:
+    startupProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 10
+      timeoutSeconds: 30
+      periodSeconds: 30
+      failureThreshold: 20
+    livenessProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+      periodSeconds: 30
+      failureThreshold: 2
+    readinessProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 10
+      periodSeconds: 30
+      timeoutSeconds: 30
+      failureThreshold: 2
+  monitoringcontainer:
+    startupProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 10
+      timeoutSeconds: 30
+      periodSeconds: 30
+      failureThreshold: 20
+    livenessProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+      periodSeconds: 30
+      failureThreshold: 2
+  httpdcontainer:
+    startupProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 10
+      timeoutSeconds: 30
+      periodSeconds: 30
+      failureThreshold: 20
+    livenessProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+      periodSeconds: 30
+      failureThreshold: 2
+    readinessProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 10
+      periodSeconds: 30
+      timeoutSeconds: 30
+      failureThreshold: 2
+startupProbe:
+  enabled: true
+  command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+  arguments: --exec_agents
+  initialDelaySeconds: 10
+  timeoutSeconds: 30
+  periodSeconds: 30
+  failureThreshold: 20
+# LivenessProbe Health Check configuration.
+livenessProbe:
+  enabled: true
+  command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+  arguments: --exec_agents
+  initialDelaySeconds: 30
+  timeoutSeconds: 30
+  periodSeconds: 30
+  failureThreshold: 2
+readinessProbe:
+  enabled: true
+  command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+  arguments: --exec_agents
+  initialDelaySeconds: 10
+  periodSeconds: 30
+  timeoutSeconds: 30
+  failureThreshold: 2
+# Extra Annotations to be added to pod
+podAnnotations: {}
+## Tolerations for pod assignment
+tolerations: []
+## Affinity for pod assignment
+affinity: requiredDuringSchedulingIgnoredDuringExecution
+# Constrain which nodes your pod is eligible to be scheduled on
+nodeAffinity: {}
+priorityClassName: ""
+## Node selector
+nodeSelector: {}
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 0
+## Pod Disruption Budget is an indicator of the number of disruptions that can be tolerated at a given time.
+podDisruptionBudget:
+  maxUnavailable: 1
+spec:
+  httpPort: 8084
+  httpsPort: 8444
+credmController:
+  name: eric-enm-credm-controller
+  port: 5001
+jobs:
+  jobAction: certrequest
+  certRequest:
+    imageName: enm-certrequestjob-container
+    pullPolicy: Always
+    tag: 1.52.0-33
+    resources:
+      requests:
+        enabled: true
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        enabled: true
+        cpu: 1000m
+        memory: 512Mi
+podSecurityContext:
+  supplementalGroups:
+  - 210
+  - 0
+  - 206
+  - 5004
+  - 5000
+securityContext:
+  fmx-adminws:
+    allowPrivilegeEscalation: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    capabilities:
+      drop:
+      - all
+      add:
+      - SYS_ADMIN
+      - FOWNER
+      - DAC_READ_SEARCH
+      - CHOWN
+      - SYS_PTRACE
+      - DAC_OVERRIDE
+      - KILL
+      - NET_ADMIN
+      - SYS_BOOT
+      - SYS_RESOURCE
+      - SYS_TIME
+      - SYS_TTY_CONFIG
+      - MKNOD
+      - AUDIT_WRITE
+      - SETGID
+      - SETUID
+      - SETPCAP
+      - SYS_NICE
+      - SYSLOG
+      - FSETID
+      - NET_BIND_SERVICE
+  monitoring:
+    allowPrivilegeEscalation: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    capabilities:
+      drop:
+      - all
+  waitInitContainer:
+    allowPrivilegeEscalation: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    capabilities:
+      drop:
+      - all
+  httpd:
+    allowPrivilegeEscalation: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    capabilities:
+      drop:
+      - all
+      add:
+      - DAC_OVERRIDE
+      - FSETID
+      - CHOWN
+      - FOWNER
+      - SETGID
+      - SETUID
+  waitForCertificatesContainer:
+    allowPrivilegeEscalation: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    capabilities:
+      drop:
+      - all
